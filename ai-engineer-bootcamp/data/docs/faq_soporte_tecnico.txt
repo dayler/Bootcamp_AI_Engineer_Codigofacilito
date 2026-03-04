@@ -1,0 +1,39 @@
+PREGUNTAS FRECUENTES — SOPORTE TÉCNICO TECHCORP
+Centro de Ayuda al Empleado | Última actualización: febrero 2025
+
+¡Hola! Aquí encontrarás respuestas a las dudas más comunes sobre tecnología y soporte en TechCorp. Si no encuentras lo que buscas, levanta un ticket en ServiceNow o escríbenos por Slack en #help-desk.
+
+---
+
+P: ¿Cómo reseteo mi contraseña de Windows?
+R: Hay dos formas de hacerlo. La más rápida es usar el portal de autoservicio en https://password.techcorp.mx. Solo necesitas tu correo corporativo y responder las preguntas de seguridad que configuraste cuando entraste a la empresa. Si no recuerdas las respuestas, manda un mensaje al canal #help-desk en Slack o llama a la extensión 5000 y te ayudamos en menos de 15 minutos. Recuerda que la contraseña debe tener mínimo 12 caracteres, incluir mayúsculas, minúsculas, números y al menos un carácter especial. Las contraseñas expiran cada 90 días y no puedes reutilizar las últimas 10 contraseñas.
+
+P: Mi laptop está muy lenta, ¿qué hago?
+R: Antes de levantar un ticket, prueba estas cosas: primero, reinicia tu máquina (sí, aunque suene obvio, el 60% de los problemas de rendimiento se resuelven así). Segundo, revisa si hay actualizaciones pendientes de Windows en Configuración > Windows Update. Tercero, cierra las apps que no estés usando, especialmente Chrome si tienes más de 20 pestañas abiertas, eso consume mucha memoria RAM. Si después de eso sigue lenta, levanta un ticket en ServiceNow con categoría "TI > Hardware > Rendimiento" y adjunta una captura del Administrador de Tareas mostrando el uso de CPU y memoria. El SLA para estos tickets es de 24 horas hábiles para primera respuesta y 48 horas para resolución.
+
+P: ¿Cómo me conecto a la VPN para trabajar desde casa?
+R: Usamos Cisco AnyConnect para la VPN. Si aún no lo tienes instalado, descárgalo desde el portal de software en https://software.techcorp.mx (necesitas estar en la red de la oficina o pedirlo por ServiceNow). Para conectarte: abre AnyConnect, escribe "vpn.techcorp.mx" como servidor, usa tu usuario de red (el mismo del correo pero sin @techcorp.mx) y tu contraseña. Te va a pedir un código de autenticación multifactor (MFA) que llega a la app Microsoft Authenticator en tu celular. Si es la primera vez, necesitas configurar el MFA siguiendo la guía SETUP-MFA-001 que te mandaron por correo cuando te dieron tu equipo. Si perdiste el acceso al MFA, contacta a Seguridad de la Información en security@techcorp.mx o extensión 5100.
+
+P: ¿Cómo solicito software nuevo para mi equipo?
+R: Todo software debe ser aprobado por TI antes de instalarse. Levanta una solicitud en ServiceNow con categoría "TI > Software > Nueva Instalación". Incluye el nombre del software, la versión, para qué lo necesitas y si tiene costo. El equipo de Arquitectura revisa la solicitud en máximo 3 días hábiles para verificar compatibilidad y seguridad. Si es software de pago, necesitas que tu gerente autorice la compra con un CAPEX o OPEX según corresponda. Software de código abierto generalmente se aprueba en 1-2 días si no tiene restricciones de licencia.
+
+P: No puedo entrar a mi correo de Outlook, ¿qué pasa?
+R: Lo más común es que tu contraseña haya expirado. Prueba resetearla en el portal de autoservicio. Si no es eso, verifica que no estés intentando entrar desde una red pública sin VPN, ya que nuestro Exchange Online tiene políticas de acceso condicional que bloquean conexiones desde redes no confiables. También puede ser que tu cuenta esté bloqueada por intentos fallidos de login, en ese caso espera 30 minutos o llama al help desk para desbloquearla manualmente. Si ves el error "Su buzón se ha movido", es porque estamos en proceso de migración a la nueva infraestructura de Exchange y necesitas actualizar tu perfil de Outlook con la herramienta SARA (Support and Recovery Assistant) de Microsoft.
+
+P: ¿Cómo configuro la impresora de la oficina?
+R: Las impresoras se configuran automáticamente cuando tu laptop está conectada a la red de la oficina. Si no aparecen, ve a Configuración > Impresoras y escáneres > Agregar impresora. Las impresoras de TechCorp siguen la nomenclatura PISO-ZONA-TIPO, por ejemplo "P3-NORTE-COLOR" es la impresora a color del tercer piso zona norte. Si necesitas imprimir documentos confidenciales, usa la función "Impresión Segura" que requiere que liberes el documento con tu badge en el equipo multifuncional. Los códigos de departamento para cargo de impresiones se configuran en el portal de autoservicio bajo "Mis Servicios > Impresión".
+
+P: ¿Qué hago si creo que recibí un correo de phishing?
+R: Primero que nada, no hagas clic en ningún enlace ni descargues archivos adjuntos. Usa el botón "Report Phishing" que aparece en la barra de herramientas de Outlook (es un ícono de anzuelo amarillo). Eso automáticamente envía el correo al equipo de Seguridad de la Información para análisis y lo mueve a tu carpeta de eliminados. Si accidentalmente hiciste clic en un enlace sospechoso, reporta inmediatamente al equipo de seguridad llamando a la extensión 5100 o enviando un correo a incident@techcorp.mx con asunto "URGENTE: Posible compromiso de cuenta". Cambia tu contraseña inmediatamente desde otro dispositivo. TechCorp realiza simulacros de phishing mensuales como parte del programa de concientización SEC-AWARE-001.
+
+P: ¿Cómo accedo a los sistemas cuando estoy de viaje internacional?
+R: Conectar la VPN desde el extranjero funciona igual que desde casa, pero ten en cuenta que algunos países tienen restricciones o bloqueos de VPN (especialmente China y Rusia). Si vas a viajar, notifica a TI con al menos una semana de anticipación mediante el formulario FORM-TRAVEL-IT en ServiceNow para que te configuren una conexión alternativa si es necesario. También activa el roaming de datos en tu celular corporativo llamando a la extensión 5200 para que no pierdas acceso al MFA.
+
+P: ¿Mi información personal está segura en los sistemas de la empresa?
+R: TechCorp cumple con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y con el RGPD europeo para los colaboradores de la subsidiaria en España. Tus datos personales se almacenan encriptados en los servidores de SAP SuccessFactors con cifrado AES-256. Solo el personal autorizado de RH y tu líder directo tienen acceso a cierta información. Puedes ejercer tus derechos ARCO (Acceso, Rectificación, Cancelación y Oposición) contactando al Oficial de Protección de Datos en dpo@techcorp.mx. Para más detalles, consulta el Aviso de Privacidad disponible en la intranet bajo "Documentos Legales > Privacidad".
+
+P: ¿Cómo reporto un incidente de seguridad informática?
+R: Cualquier evento sospechoso debe reportarse de inmediato. Los canales son: extensión 5100 para emergencias, correo a incident@techcorp.mx para incidentes no urgentes, o el botón "Reportar Incidente" en la intranet. Los tipos de incidentes incluyen: acceso no autorizado a sistemas, pérdida o robo de equipo, fuga de información, malware detectado, y comportamiento inusual del sistema. El equipo de respuesta a incidentes (CSIRT) opera bajo el procedimiento SEC-INC-001 y tiene un SLA de respuesta de 15 minutos para incidentes críticos, 1 hora para altos, 4 horas para medios y 24 horas para bajos.
+
+P: ¿Puedo usar mi celular personal para acceso al correo corporativo?
+R: Sí, pero necesitas inscribir tu dispositivo en Microsoft Intune, que es nuestra plataforma de gestión de dispositivos móviles (MDM). Ve a la app Portal de Empresa en tu celular y sigue las instrucciones. Intune solo gestiona el perfil corporativo de tu celular, no accede a tus fotos, mensajes personales ni apps. Sin embargo, sí puede borrar remotamente los datos corporativos si reportas el dispositivo como perdido o robado. Los requisitos mínimos son: iOS 16+ o Android 12+, cifrado activado, y no tener root/jailbreak.

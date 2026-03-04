@@ -1,0 +1,102 @@
+PROCEDIMIENTO DE EVALUACIÓN DE DESEMPEÑO — CÓDIGO: RH-EVAL-002
+Versión 3.0 | Departamento de Gestión del Talento — TechCorp Solutions
+
+1. PROPÓSITO Y FRECUENCIA
+
+El proceso de evaluación de desempeño de TechCorp Solutions tiene como objetivo medir el cumplimiento de objetivos individuales y competencias organizacionales, identificar oportunidades de desarrollo y fundamentar las decisiones de compensación variable y promociones. Las evaluaciones se realizan de forma semestral: el primer ciclo cubre enero a junio (revisión en julio) y el segundo ciclo cubre julio a diciembre (revisión en enero del año siguiente).
+
+2. PARTICIPANTES Y ROLES
+
+2.1. Colaborador evaluado: Todo empleado con más de 3 meses de antigüedad al cierre del periodo participa en la evaluación. Los colaboradores de nuevo ingreso con menos de 3 meses reciben una evaluación parcial enfocada en adaptación y aprendizaje.
+
+2.2. Evaluador principal: El líder directo del colaborador, quien es responsable de asignar la calificación final y documentar la retroalimentación. El evaluador principal debe haber supervisado al colaborador durante al menos el 60% del periodo evaluado; en caso contrario, el líder anterior participa como co-evaluador.
+
+2.3. Evaluadores de 360 grados: Para posiciones de liderazgo (gerentes, directores y VPs), se incluyen evaluaciones anónimas de reportes directos, pares y colaboradores de otras áreas. Se requiere un mínimo de 5 evaluadores para garantizar el anonimato. El sistema SuccessFactors (módulo Performance & Goals) gestiona automáticamente la selección y notificación de evaluadores.
+
+3. METODOLOGÍA DE EVALUACIÓN
+
+3.1. Componentes de la evaluación:
+La calificación final se compone de tres elementos ponderados:
+
+a) Cumplimiento de Objetivos (50%): Medición del logro de los 3 a 5 objetivos SMART definidos al inicio del periodo. Cada objetivo tiene un peso específico y se evalúa en una escala de 0% a 120% (donde 120% representa sobredesempeño excepcional). Los objetivos se registran en SuccessFactors con la categoría OBJ-IND y deben estar alineados con los OKRs del equipo y de la empresa.
+
+b) Competencias Organizacionales (30%): Evaluación de las 6 competencias core de TechCorp:
+- Innovación y pensamiento creativo (COMP-INN)
+- Orientación a resultados (COMP-RES)
+- Colaboración y trabajo en equipo (COMP-COL)
+- Comunicación efectiva (COMP-COM)
+- Adaptabilidad y aprendizaje continuo (COMP-ADA)
+- Liderazgo e influencia (COMP-LID, solo para posiciones de liderazgo)
+
+Cada competencia se evalúa en una escala de 1 a 5:
+1 = No cumple expectativas
+2 = Cumple parcialmente
+3 = Cumple expectativas
+4 = Supera expectativas
+5 = Excede significativamente
+
+c) Contribuciones Especiales (20%): Reconocimiento de contribuciones que van más allá de los objetivos formales, como mentoría a compañeros, participación en proyectos transversales, mejoras de procesos, representación de la empresa en eventos, publicaciones técnicas, patentes o contribuciones a comunidades open source. Se documenta con evidencias concretas.
+
+3.2. Calibración:
+Después de que los evaluadores asignan calificaciones individuales, se realiza una sesión de calibración por dirección. El objetivo es asegurar consistencia en los criterios de evaluación entre diferentes evaluadores y equipos. Las sesiones de calibración son facilitadas por el HR Business Partner asignado a cada dirección y siguen la distribución sugerida (no forzada): 10% Excepcional, 25% Superior, 40% Cumple, 20% Necesita mejorar, 5% Insuficiente.
+
+4. ESCALA DE CALIFICACIÓN FINAL
+
+Después de ponderar los tres componentes y aplicar la calibración, la calificación final se expresa como:
+
+- E (Excepcional): Calificación ponderada 4.5 - 5.0. El colaborador consistentemente excede las expectativas en todas las dimensiones. Elegible para promoción acelerada y bono máximo.
+- S (Superior): Calificación 3.5 - 4.4. Desempeño sólido que supera lo esperado en la mayoría de las dimensiones. Elegible para bono target y consideración para promoción.
+- C (Cumple): Calificación 2.5 - 3.4. Desempeño satisfactorio que cumple con lo esperado. Bono proporcional al cumplimiento.
+- NM (Necesita Mejorar): Calificación 1.5 - 2.4. Desempeño por debajo de lo esperado en áreas clave. Se activa el Plan de Mejora de Desempeño (PIP, código RH-PIP-001) con duración de 90 días.
+- I (Insuficiente): Calificación menor a 1.5. Desempeño significativamente por debajo de lo aceptable. Se activa PIP inmediato con posible rescisión si no hay mejora en 60 días.
+
+5. COMPENSACIÓN VARIABLE
+
+5.1. Bono de desempeño:
+El bono de desempeño se calcula como porcentaje del salario bruto anual según la calificación:
+- E: 20% del salario bruto anual
+- S: 15% del salario bruto anual
+- C: 10% del salario bruto anual
+- NM: 0% (sin bono)
+- I: 0% (sin bono)
+
+El bono se paga en una sola exhibición en la nómina de marzo (para el ciclo anual completo). Para el ciclo semestral, se paga un anticipo del 40% del bono estimado en agosto.
+
+5.2. Incremento salarial:
+Los incrementos salariales se determinan durante el proceso anual de revisión de compensaciones (febrero-marzo), tomando como base la calificación de desempeño del año completo, la posición del colaborador respecto al rango salarial de su nivel (compa-ratio), y las condiciones del mercado laboral según el estudio de compensaciones de Mercer y AON.
+
+6. PLAN DE DESARROLLO INDIVIDUAL (PDI)
+
+Como resultado de la evaluación, cada colaborador debe definir un Plan de Desarrollo Individual con su líder que incluya:
+- 2 a 3 fortalezas a potenciar
+- 1 a 2 áreas de mejora con acciones concretas
+- Recursos necesarios (capacitación, mentoría, certificaciones)
+- Fechas de revisión de avance (mínimo trimestral)
+
+El PDI se registra en SuccessFactors (módulo Development) con el código PDI-YYYY-EMPID y se vincula con el catálogo de capacitación de TechCorp University. La empresa asigna un presupuesto anual de desarrollo de $15,000 MXN por colaborador para certificaciones, cursos y conferencias (código presupuestal CAP-DEV).
+
+7. PROCESO DE APELACIÓN
+
+Si un colaborador no está de acuerdo con su calificación final, puede iniciar un proceso de apelación dentro de los 15 días hábiles posteriores a la notificación de resultados. El proceso es:
+1. Reunión con el evaluador principal para discutir los fundamentos (paso obligatorio)
+2. Si no hay acuerdo, solicitud formal al HR Business Partner
+3. Revisión por parte del Director del área y el HRBP
+4. Decisión final comunicada en máximo 10 días hábiles
+
+Las apelaciones se registran en ServiceNow con categoría "RH > Evaluación > Apelación" y tienen seguimiento confidencial.
+
+8. CALENDARIO DEL PROCESO
+
+- Enero (semana 2): Apertura del ciclo, definición de objetivos para el primer semestre
+- Junio (semana 4): Cierre de registro de evidencias del primer semestre
+- Julio (semanas 1-2): Evaluación del primer semestre, autoevaluaciones y evaluaciones de líderes
+- Julio (semana 3): Sesiones de calibración por dirección
+- Julio (semana 4): Comunicación de resultados y retroalimentación
+- Agosto (semana 1): Registro de PDI actualizado
+- Enero siguiente: Repetición del ciclo para segundo semestre + evaluación anual consolidada
+
+Contacto del equipo de Gestión del Talento:
+- Correo: talent@techcorp.mx
+- Extensión: 4600
+- Canal Slack: #rh-evaluaciones
+- ServiceNow: categoría "RH > Evaluación de Desempeño"

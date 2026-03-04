@@ -1,0 +1,74 @@
+POLÍTICA DE VACACIONES Y PERMISOS — CÓDIGO: RH-POL-003
+Versión 4.2 | Última actualización: enero 2025
+Departamento de Recursos Humanos — TechCorp Solutions S.A. de C.V.
+
+1. ALCANCE Y APLICABILIDAD
+
+La presente política aplica a todos los colaboradores de TechCorp Solutions con contrato indefinido, temporal o por proyecto, incluyendo personal de las subsidiarias TechCorp Cloud Services y TechCorp Data Analytics. Los practicantes y becarios se rigen por el anexo RH-POL-003-A.
+
+2. DÍAS DE VACACIONES POR ANTIGÜEDAD
+
+Conforme a la Ley Federal del Trabajo y al beneficio superior otorgado por la empresa:
+- Primer año: 12 días hábiles (la ley establece 12 días desde la reforma 2023)
+- Segundo año: 14 días hábiles
+- Tercer año: 16 días hábiles
+- Cuarto año: 18 días hábiles
+- Del quinto al noveno año: 20 días hábiles
+- Del décimo al decimocuarto año: 22 días hábiles
+- Quince años o más: 24 días hábiles más 2 días adicionales por cada 5 años de servicio
+
+La prima vacacional es del 30% sobre los días de vacaciones, superior al 25% mínimo legal. El cálculo se realiza sobre el salario diario integrado registrado en el sistema SAP HR módulo PA (transacción PA20).
+
+3. PROCEDIMIENTO DE SOLICITUD
+
+3.1. El colaborador debe ingresar su solicitud en el portal de autoservicio ESS (Employee Self-Service) con un mínimo de 15 días naturales de anticipación para periodos de 5 días o más, y 5 días naturales para periodos menores.
+
+3.2. El líder directo tiene un plazo máximo de 3 días hábiles para aprobar o rechazar la solicitud. Si no responde en ese plazo, el sistema escala automáticamente al siguiente nivel jerárquico mediante el workflow WF-VAC-001 configurado en SAP.
+
+3.3. Para periodos que coincidan con cierres fiscales (últimas dos semanas de marzo, junio, septiembre y diciembre), se requiere aprobación adicional del Director de Área. Estos periodos se denominan "fechas restringidas" con código FR-001 a FR-004 en el sistema.
+
+3.4. No se permiten más de 2 colaboradores del mismo equipo en vacaciones simultáneamente, salvo autorización expresa del VP del área documentada mediante memorándum interno con folio consecutivo del departamento.
+
+4. ACUMULACIÓN Y VENCIMIENTO
+
+Los días de vacaciones pueden acumularse hasta por 2 periodos anuales. Los días no disfrutados después de 18 meses de su generación se consideran prescritos conforme al artículo 516 de la Ley Federal del Trabajo. El sistema SAP genera alertas automáticas a los 12 y 15 meses de acumulación mediante el job periódico ZRPT_VAC_ALERT.
+
+En casos excepcionales, el Comité de Compensaciones (integrado por el CHRO, CFO y el VP de la línea de negocio correspondiente) puede autorizar extensiones de hasta 6 meses adicionales, documentadas en acta con número de folio CC-YYYY-NNN.
+
+5. PERMISOS ESPECIALES CON GOCE DE SUELDO
+
+Además de las vacaciones ordinarias, TechCorp Solutions otorga los siguientes permisos remunerados:
+- Matrimonio del colaborador: 5 días hábiles (código PER-MAT)
+- Nacimiento o adopción de hijo: 5 días hábiles para padre, madre según IMSS (código PER-NAC)
+- Fallecimiento de familiar directo (padres, hijos, cónyuge, hermanos): 3 días hábiles (código PER-DEF)
+- Mudanza de domicilio: 1 día hábil (código PER-MUD), máximo una vez por año
+- Exámenes profesionales o de posgrado: hasta 3 días (código PER-EXA) con constancia de la institución educativa
+- Emergencia médica de dependiente económico: hasta 2 días (código PER-EME) con comprobante médico
+
+6. DÍAS FESTIVOS ADICIONALES DE LA EMPRESA
+
+Además de los días festivos oficiales establecidos por ley, TechCorp Solutions otorga como días no laborables:
+- Viernes de la semana de cumpleaños del colaborador (TechBirthday)
+- 24 de diciembre (Nochebuena)
+- 31 de diciembre (Fin de año)
+- Lunes y martes de Semana Santa
+- Día de TechCorp (aniversario de la empresa, tercer viernes de octubre)
+
+7. HOME OFFICE Y VACACIONES
+
+Los colaboradores con esquema de trabajo remoto o híbrido deben notificar su ubicación geográfica durante vacaciones si planean trabajar desde otra localidad antes o después de su periodo vacacional. Esta notificación se realiza mediante el formulario digital FORM-HO-LOC disponible en la intranet.
+
+8. CANCELACIÓN Y MODIFICACIÓN
+
+Las solicitudes aprobadas pueden cancelarse o modificarse hasta 5 días hábiles antes de la fecha de inicio. Las cancelaciones con menor anticipación requieren justificación por escrito y aprobación del líder directo. Los boletos de avión o reservaciones no son responsabilidad de la empresa en caso de cancelación por necesidades del negocio, salvo que se trate de un recall autorizado por el Director General, en cuyo caso aplica el reembolso bajo la política FIN-REIMB-002.
+
+9. CONTACTO Y ACLARACIONES
+
+Para dudas sobre esta política, contactar al equipo de People Operations:
+- Correo: people.ops@techcorp.mx
+- Extensión: 4500
+- Canal Slack: #rh-vacaciones-y-permisos
+- Ticket en ServiceNow: categoría "RH > Vacaciones y Permisos"
+
+Documento controlado por el Sistema de Gestión de Calidad ISO 9001:2015.
+Siguiente revisión programada: julio 2025.

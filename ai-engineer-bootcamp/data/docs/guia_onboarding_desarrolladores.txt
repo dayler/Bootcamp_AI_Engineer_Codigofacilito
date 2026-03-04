@@ -1,0 +1,133 @@
+GUÍA DE ONBOARDING PARA DESARROLLADORES — REF: DEV-ONB-001
+Versión 2.3 | Dirección de Ingeniería de Software — TechCorp Solutions
+
+¡Bienvenido al equipo de Ingeniería de TechCorp Solutions! Esta guía te ayudará a configurar tu ambiente de desarrollo y conocer nuestras prácticas de ingeniería. Tu buddy de onboarding te acompañará durante tus primeras dos semanas.
+
+1. CONFIGURACIÓN INICIAL DEL AMBIENTE DE DESARROLLO
+
+1.1. Solicitud de accesos (Día 1)
+Tu líder técnico debe crear los siguientes tickets en ServiceNow antes de tu primer día:
+- Acceso a GitHub Enterprise (organización: techcorp-solutions) — ticket tipo ACC-GH
+- Acceso a Jira Software (proyecto según tu equipo) — ticket tipo ACC-JIRA
+- Acceso a Confluence (espacios de documentación técnica) — ticket tipo ACC-CONF
+- Acceso a AWS/Azure (según tu equipo, con rol de ReadOnly inicialmente) — ticket tipo ACC-CLOUD
+- Acceso a DataDog (monitoreo y observabilidad) — ticket tipo ACC-MON
+- Acceso al cluster de Kubernetes (namespace de desarrollo) — ticket tipo ACC-K8S
+
+1.2. Herramientas estándar (Día 1-2)
+Instala las siguientes herramientas usando el script automatizado dev-setup.sh disponible en el repositorio techcorp-solutions/developer-tools:
+
+- IDE: Visual Studio Code o JetBrains (según preferencia, licencia proporcionada por TechCorp)
+- Runtime: Python 3.11+, Node.js 20 LTS, Java 21 LTS (según tu stack)
+- Contenedores: Docker Desktop con licencia empresarial, kubectl, Helm 3
+- IaC: Terraform 1.6+, Terragrunt
+- CLI de nube: AWS CLI v2, Azure CLI
+- Git: configurar con tu correo corporativo (git config --global user.email "nombre@techcorp.mx")
+- Pre-commit hooks: el repositorio base incluye hooks para linting, formateo y detección de secretos
+
+1.3. Acceso a repositorios (Día 2)
+Nuestro código se organiza en los siguientes repositorios principales:
+- techcorp-platform: Monorepo del backend (Python/FastAPI + Go microservicios)
+- techcorp-frontend: Aplicación web React + TypeScript
+- techcorp-mobile: Apps iOS (Swift) y Android (Kotlin)
+- techcorp-infra: Código de infraestructura (Terraform + Helm charts)
+- techcorp-ml: Pipeline de machine learning (Python + MLflow)
+- techcorp-data: ETLs y pipelines de datos (Apache Airflow + dbt)
+
+2. ESTÁNDARES DE CÓDIGO
+
+2.1. Estilo y formateo:
+- Python: seguimos PEP 8 con black como formateador (line-length=120), isort para imports, ruff como linter
+- TypeScript: ESLint con configuración estricta + Prettier
+- Go: gofmt estándar + golangci-lint
+- Java: Google Java Style Guide + Checkstyle
+
+El CI/CD verifica automáticamente el formateo. Los PRs que no pasen las validaciones de estilo no pueden mergearse.
+
+2.2. Revisión de código:
+Todo cambio requiere Pull Request con al mínimo 2 revisores aprobando. Para cambios en producción o infraestructura, se requiere revisión adicional del Tech Lead del equipo. Los PRs deben incluir:
+- Descripción clara del cambio y su motivación
+- Tests unitarios y/o de integración
+- Actualización de documentación si aplica
+- Screenshots o GIFs para cambios de UI
+- Link al ticket de Jira correspondiente
+
+2.3. Convenciones de branching:
+Usamos GitFlow modificado:
+- main: código en producción (protegido, solo merge desde release/*)
+- develop: integración continua
+- feature/*: nuevas funcionalidades (ej: feature/JIRA-1234-nueva-api)
+- bugfix/*: correcciones (ej: bugfix/JIRA-5678-fix-login)
+- hotfix/*: correcciones urgentes en producción
+- release/*: preparación de releases
+
+2.4. Commits:
+Seguimos Conventional Commits: tipo(scope): descripción
+Tipos permitidos: feat, fix, docs, style, refactor, perf, test, chore, ci
+Ejemplo: feat(auth): add OAuth2 PKCE flow for mobile clients
+
+3. ARQUITECTURA Y SERVICIOS
+
+3.1. Arquitectura general:
+TechCorp Platform sigue una arquitectura de microservicios desplegados en Kubernetes (EKS en AWS para producción, AKS en Azure para disaster recovery). Los servicios se comunican mediante gRPC para comunicación síncrona y Apache Kafka para eventos asíncronos.
+
+3.2. Servicios principales:
+- api-gateway: Kong Gateway como punto de entrada (rate limiting, auth, routing)
+- auth-service: Autenticación y autorización (OAuth2 + OIDC) — Python/FastAPI
+- user-service: Gestión de usuarios y perfiles — Go
+- product-service: Catálogo de productos — Go
+- order-service: Procesamiento de pedidos — Python/FastAPI
+- payment-service: Integración con pasarelas de pago — Java/Spring Boot
+- notification-service: Envío de correos, SMS y push — Python/Celery
+- analytics-service: Pipeline de analytics en tiempo real — Python/Apache Flink
+
+3.3. Bases de datos:
+- PostgreSQL 16: base de datos principal (RDS Multi-AZ)
+- Redis 7: caché y sesiones (ElastiCache)
+- MongoDB 7: almacenamiento de documentos no estructurados (Atlas)
+- Apache Kafka: event streaming y message broker (MSK)
+- Elasticsearch 8: búsqueda full-text y logs (OpenSearch Service)
+
+4. CI/CD Y DESPLIEGUES
+
+4.1. Pipeline estándar:
+Usamos GitHub Actions con el siguiente flujo:
+- Push a feature/*: lint + unit tests + build
+- PR a develop: lint + unit tests + integration tests + security scan (Snyk) + preview deploy
+- Merge a develop: deploy automático a ambiente de staging
+- Release tag: deploy a producción con aprobación manual del Release Manager
+
+4.2. Ambientes:
+- Development (dev): cada desarrollador tiene un namespace en Kubernetes para pruebas
+- Staging (stg): réplica de producción con datos anonimizados
+- Production (prd): ambiente final, acceso restringido al equipo de SRE y Release Managers
+
+4.3. Feature flags:
+Usamos LaunchDarkly para gestión de feature flags. Todo cambio significativo debe ir detrás de un feature flag para permitir rollback rápido sin redespliegue. La convención de naming es: ff-JIRA-TICKET-descripcion-corta.
+
+5. MONITOREO Y OBSERVABILIDAD
+
+5.1. Stack de observabilidad:
+- Métricas: DataDog (dashboards, alertas, APM)
+- Logs: Elasticsearch/OpenSearch con Kibana (centralización de logs)
+- Trazas distribuidas: DataDog APM con OpenTelemetry
+- Alertas: PagerDuty integrado con DataDog (rotación de on-call semanal)
+
+5.2. SLOs y SLAs:
+Cada servicio tiene definidos sus Service Level Objectives:
+- Disponibilidad: 99.9% (máximo 8.76 horas de downtime al año)
+- Latencia P99: < 500ms para APIs sincrónicas
+- Error rate: < 0.1% de requests con error 5xx
+
+6. CALENDARIO DE ONBOARDING
+
+- Semana 1: Configuración de ambiente, accesos, lectura de documentación de arquitectura
+- Semana 2: Primer PR (bug fix pequeño o mejora de documentación), pair programming con buddy
+- Semana 3-4: Primera feature independiente con apoyo del buddy
+- Mes 2: Participación en on-call rotation como shadow
+- Mes 3: Revisión de código como reviewer asignado, on-call independiente
+
+Para preguntas sobre esta guía, contacta al equipo de Developer Experience:
+- Canal Slack: #dev-experience
+- Correo: devex@techcorp.mx
+- Office hours: martes y jueves de 10:00 a 11:00 AM en la sala "Turing" (piso 4)

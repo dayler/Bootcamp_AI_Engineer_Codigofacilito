@@ -1,0 +1,76 @@
+POLÍTICA DE SEGURIDAD DE LA INFORMACIÓN — CÓDIGO: SEC-POL-001
+Versión 5.0 | Fecha de vigencia: enero 2025
+Dirección de Tecnología y Seguridad de la Información — TechCorp Solutions
+
+1. OBJETIVO
+
+Establecer los lineamientos generales para la protección de los activos de información de TechCorp Solutions, garantizando su confidencialidad, integridad y disponibilidad conforme a los estándares ISO 27001:2022 e ISO 27701:2019.
+
+2. CLASIFICACIÓN DE LA INFORMACIÓN
+
+Toda la información generada, procesada o almacenada por TechCorp Solutions se clasifica en cuatro niveles:
+
+2.1. PÚBLICA (Nivel 0): Información que puede ser divulgada sin restricciones. Ejemplos: comunicados de prensa, información en el sitio web público, folletos comerciales.
+
+2.2. USO INTERNO (Nivel 1): Información destinada exclusivamente a colaboradores de TechCorp. Su divulgación no autorizada podría causar inconvenientes menores. Ejemplos: manuales de procedimientos, organigramas, directorio interno. Etiquetado obligatorio: pie de página "TechCorp — Uso Interno".
+
+2.3. CONFIDENCIAL (Nivel 2): Información cuya divulgación podría causar daño significativo a la empresa. Requiere controles de acceso estrictos. Ejemplos: planes de negocio, información financiera no publicada, datos de clientes, código fuente propietario, contratos con proveedores. Etiquetado: encabezado y pie de página "CONFIDENCIAL — TechCorp Solutions". Cifrado obligatorio en tránsito y en reposo.
+
+2.4. RESTRINGIDA (Nivel 3): Información altamente sensible cuya divulgación podría causar daño grave e irreparable. Acceso limitado por necesidad estricta de conocimiento. Ejemplos: claves criptográficas, credenciales de sistemas críticos, planes de fusiones y adquisiciones, información de vulnerabilidades de seguridad. Etiquetado: marca de agua "RESTRINGIDA" en cada página. Cifrado AES-256 obligatorio. Prohibido almacenar en dispositivos personales.
+
+3. CONTROL DE ACCESOS
+
+3.1. Principio de mínimo privilegio: Todo acceso a sistemas y datos se otorga con base en la necesidad legítima de negocio. Los accesos se revisan trimestralmente mediante el proceso de recertificación de accesos (procedimiento SEC-ACC-001).
+
+3.2. Autenticación: Todos los sistemas corporativos requieren autenticación multifactor (MFA) usando Microsoft Entra ID (anteriormente Azure AD) como proveedor de identidad centralizado. Las contraseñas deben cumplir con la política de complejidad definida en SEC-PWD-001: mínimo 12 caracteres, combinación de mayúsculas, minúsculas, números y caracteres especiales, rotación cada 90 días, sin reutilización de las últimas 10.
+
+3.3. Cuentas privilegiadas: Las cuentas con privilegios administrativos (administradores de sistemas, DBAs, administradores de red) se gestionan mediante CyberArk Privileged Access Management. Estas cuentas tienen sesiones grabadas, contraseñas rotadas automáticamente cada 24 horas, y requieren aprobación just-in-time para su uso.
+
+3.4. Acceso remoto: El acceso remoto a la red corporativa se realiza exclusivamente a través de Cisco AnyConnect VPN con autenticación MFA. Las conexiones desde redes públicas tienen restricciones adicionales: no se permite acceso a sistemas de nivel Confidencial o Restringido sin verificación adicional de dispositivo mediante certificado digital.
+
+4. PROTECCIÓN DE ENDPOINTS
+
+4.1. Todos los dispositivos corporativos (laptops, desktops, dispositivos móviles) deben tener instalado y actualizado CrowdStrike Falcon como solución de Endpoint Detection and Response (EDR). La desactivación o desinstalación de CrowdStrike es una violación grave a esta política.
+
+4.2. El cifrado de disco completo mediante BitLocker (Windows) o FileVault (macOS) es obligatorio. Las claves de recuperación se almacenan centralmente en Microsoft Entra ID.
+
+4.3. Las actualizaciones de sistema operativo y aplicaciones se gestionan mediante Microsoft Intune con la política de parches PATCH-POL-001: parches críticos en 72 horas, parches altos en 7 días, parches medios en 30 días.
+
+5. SEGURIDAD EN LA NUBE
+
+5.1. TechCorp Solutions opera bajo un modelo multi-cloud con Azure como proveedor principal y AWS como secundario. Todos los recursos en la nube se despliegan mediante Infrastructure as Code (Terraform) con revisión de seguridad automatizada mediante Checkov y manual mediante el equipo de Cloud Security.
+
+5.2. Los datos clasificados como Confidenciales o Restringidos solo pueden almacenarse en las regiones autorizadas: Azure West US 2, Azure East US, AWS us-east-1, AWS us-west-2. Queda prohibido el almacenamiento en regiones fuera de los Estados Unidos y México sin autorización expresa del CISO.
+
+5.3. Todos los buckets de S3 y contenedores de Azure Blob Storage deben tener desactivado el acceso público. El monitoreo automatizado mediante AWS Config Rules y Azure Policy genera alertas inmediatas ante cualquier cambio que exponga datos públicamente.
+
+6. GESTIÓN DE INCIDENTES DE SEGURIDAD
+
+6.1. El Computer Security Incident Response Team (CSIRT) de TechCorp opera bajo el procedimiento SEC-INC-001, alineado con NIST SP 800-61. Los incidentes se clasifican en cuatro niveles de severidad:
+- Crítico (P1): Compromiso activo de sistemas de producción, fuga de datos masiva, ransomware. Tiempo de respuesta: 15 minutos. Escalamiento inmediato al CISO.
+- Alto (P2): Intentos de acceso no autorizado exitosos, malware detectado en endpoints, vulnerabilidad explotable descubierta. Tiempo de respuesta: 1 hora.
+- Medio (P3): Intentos de phishing exitosos sin compromiso, violaciones menores de política. Tiempo de respuesta: 4 horas.
+- Bajo (P4): Intentos de phishing bloqueados, alertas informativas. Tiempo de respuesta: 24 horas.
+
+6.2. Todos los incidentes se documentan en la plataforma SIEM (Splunk Enterprise Security) y se reportan mensualmente al Comité de Seguridad de la Información presidido por el CISO.
+
+7. CAPACITACIÓN Y CONCIENTIZACIÓN
+
+7.1. Todos los colaboradores deben completar el curso anual de concientización en seguridad de la información (SEC-TRAIN-001) dentro de los primeros 30 días de cada año. El incumplimiento genera una restricción temporal de acceso a sistemas no esenciales.
+
+7.2. El programa de simulacros de phishing (SEC-AWARE-001) envía correos de phishing simulados mensualmente. Los colaboradores que caen en más de 2 simulacros en un trimestre son asignados a capacitación adicional obligatoria.
+
+8. SANCIONES
+
+El incumplimiento de esta política puede resultar en medidas disciplinarias que van desde amonestación verbal hasta rescisión de contrato, dependiendo de la gravedad y reincidencia. Los incidentes que constituyan delitos serán reportados a las autoridades competentes. El Comité de Ética y Cumplimiento (contacto: ethics@techcorp.mx) es responsable de evaluar las sanciones aplicables conforme al Reglamento Interior de Trabajo.
+
+9. REFERENCIAS
+
+- ISO 27001:2022 — Sistema de Gestión de Seguridad de la Información
+- ISO 27701:2019 — Gestión de Privacidad de la Información
+- NIST Cybersecurity Framework 2.0
+- Ley Federal de Protección de Datos Personales (LFPDPPP)
+- SEC-PWD-001 — Política de Contraseñas
+- SEC-ACC-001 — Procedimiento de Recertificación de Accesos
+- SEC-INC-001 — Procedimiento de Respuesta a Incidentes
+- PATCH-POL-001 — Política de Gestión de Parches

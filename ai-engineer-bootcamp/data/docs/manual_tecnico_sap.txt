@@ -1,0 +1,85 @@
+MANUAL TÉCNICO: GESTIÓN DE MATERIALES EN SAP MM — REF: SAP-MM-310
+Versión 3.1 | Departamento de TI — TechCorp Solutions
+Clasificación: Uso Interno | Nivel de Acceso: Consultores SAP y Key Users
+
+1. INTRODUCCIÓN AL MÓDULO SAP MM (Materials Management)
+
+El módulo SAP MM es el componente central para la gestión de materiales, compras y control de inventarios en TechCorp Solutions. Este manual cubre las configuraciones específicas realizadas en nuestro sistema productivo (SID: TCP-PRD, mandante 100) y las desviaciones respecto al estándar SAP S/4HANA 2023.
+
+La arquitectura del landscape SAP de TechCorp consiste en tres sistemas: desarrollo (TCP-DEV, mandante 200), quality assurance (TCP-QAS, mandante 300) y producción (TCP-PRD, mandante 100). Todos los transportes se gestionan mediante el Transport Management System (TMS) con la ruta de liberación estándar DEV → QAS → PRD.
+
+2. MAESTRO DE MATERIALES (TRANSACCIÓN MM01/MM02/MM03)
+
+2.1. Tipos de material configurados:
+- ZRAW: Materias primas (grupo de cuentas 0001)
+- ZFIN: Productos terminados (grupo de cuentas 0002)
+- ZSER: Servicios (grupo de cuentas 0003)
+- ZSPA: Repuestos (grupo de cuentas 0004)
+- ZLIC: Licencias de software (grupo de cuentas 0005, personalizado para TechCorp)
+
+2.2. Vistas obligatorias por tipo de material:
+Para tipo ZRAW se requieren las vistas: Datos básicos 1, Datos básicos 2, Compras, MRP 1, MRP 2, Contabilidad 1 y Almacén. La ausencia de cualquiera de estas vistas genera el error ZMM-001 "Vista obligatoria faltante" en el control de calidad de datos maestros (programa ZRPT_MM_DATACHECK ejecutado semanalmente).
+
+2.3. Rangos de numeración:
+- Materias primas: 100000000 a 199999999 (numeración interna automática)
+- Productos terminados: 200000000 a 299999999
+- Servicios: 300000000 a 399999999
+- Repuestos: 400000000 a 499999999
+- Licencias: 500000000 a 599999999
+
+3. PROCESO DE COMPRAS (PROCUREMENT)
+
+3.1. Flujo estándar de compras:
+Solicitud de pedido (ME51N) → Liberación de solicitud (ME54N) → Pedido de compra (ME21N) → Entrada de mercancía (MIGO) → Verificación de factura (MIRO) → Pago (transacción FI)
+
+3.2. Estrategias de liberación configuradas:
+Las solicitudes de pedido utilizan la estrategia de liberación ZRL01 con los siguientes niveles:
+- Monto hasta $5,000 MXN: aprobación del líder de equipo (código de liberación Z1)
+- Monto de $5,001 a $50,000 MXN: aprobación adicional del gerente de área (Z2)
+- Monto de $50,001 a $500,000 MXN: aprobación del director de operaciones (Z3)
+- Monto superior a $500,000 MXN: aprobación del CFO y registro en comité de compras (Z4)
+
+Los pedidos de compra siguen la estrategia ZRL02 con niveles similares pero con escalamiento automático tras 48 horas sin respuesta. El workflow correspondiente es WF-PO-LIB-001.
+
+3.3. Contratos marco y programas de entrega:
+TechCorp mantiene contratos marco (transacción ME31K) con los proveedores estratégicos clasificados como "A" en la evaluación de proveedores (transacción ME61). Los contratos marco tienen vigencia anual con cláusula de renovación automática.
+
+Los programas de entrega (transacción ME31L) se utilizan exclusivamente para materias primas con consumo regular (categoría MRP "VB" — punto de reorden con pronóstico).
+
+4. GESTIÓN DE INVENTARIOS
+
+4.1. Centros y almacenes configurados:
+- Centro TCMX (Ciudad de México): almacenes 0001 (general), 0002 (cuarentena), 0003 (transito)
+- Centro TCGD (Guadalajara): almacenes 0001 (general), 0004 (devoluciones)
+- Centro TCMT (Monterrey): almacenes 0001 (general), 0005 (alta seguridad)
+
+4.2. Tipos de movimiento personalizados:
+- Z101: Entrada de mercancía con referencia a pedido y control de calidad obligatorio
+- Z201: Salida de mercancía a centro de costos con aprobación electrónica
+- Z301: Transferencia entre centros con generación automática de documento de transporte
+- Z561: Salida por obsolescencia con aprobación del controller de área
+
+4.3. Inventario físico:
+El conteo cíclico se ejecuta mensualmente mediante la transacción MI01 (crear documento de inventario) con el programa ZRPT_INV_CYCLE. Los materiales clasificados como "A" en el análisis ABC se cuentan mensualmente, los "B" trimestralmente y los "C" semestralmente. Las diferencias superiores al 2% generan una alerta automática al controller del centro mediante la transacción MI07 y el workflow WF-INV-DIF-001.
+
+5. INTEGRACIONES CON OTROS MÓDULOS
+
+5.1. MM-FI: La contabilización automática de movimientos de mercancía se configura en la transacción OBYC. Las cuentas contables asignadas siguen el plan de cuentas ZTCP definido conjuntamente con el departamento de contabilidad.
+
+5.2. MM-PP: La planificación de necesidades de material (MRP) se ejecuta diariamente a las 02:00 AM mediante el job ZRPT_MRP_RUN con la transacción MD01. Los parámetros de planificación se mantienen en la vista MRP del maestro de materiales.
+
+5.3. MM-QM: Los materiales con indicador de calidad activo requieren inspección de entrada obligatoria. El tipo de inspección 01 (inspección de entrada) se activa automáticamente con el movimiento Z101.
+
+6. REPORTES PERSONALIZADOS
+
+- ZRPT_MM_STOCK: Reporte de stock valorizado por centro y almacén (reemplaza MB52)
+- ZRPT_MM_PURCHASE: Análisis de compras por proveedor y periodo
+- ZRPT_MM_SLOW: Materiales de lento movimiento (sin movimiento en 90+ días)
+- ZRPT_MM_CONTRACT: Seguimiento de consumo vs. contratos marco
+- ZRPT_MM_DATACHECK: Validación semanal de datos maestros de materiales
+
+Para soporte técnico del módulo SAP MM, contactar al equipo de SAP Basis y Funcional:
+- Canal Slack: #sap-soporte
+- Correo: sap.support@techcorp.mx
+- ServiceNow: categoría "TI > SAP > MM"
+- Horario de soporte: lunes a viernes de 8:00 a 20:00 horas (CST)
