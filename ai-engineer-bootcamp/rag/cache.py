@@ -9,7 +9,7 @@ from typing import Callable
 
 import numpy as np
 
-from rag.access_control import User, retrieve_with_access
+from access_control import User, retrieve_with_access
 
 
 def _cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:

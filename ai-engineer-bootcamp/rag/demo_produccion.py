@@ -11,14 +11,19 @@ import os
 import tempfile
 
 import chromadb
-from groq import Groq
+
 from sentence_transformers import SentenceTransformer
 
-from rag.access_control import User, ingest_document_with_access, retrieve_with_access
-from rag.cache import SemanticCache, rag_query
-from rag.index_ops import ingest_new_version, sync_documents
+from access_control import User, ingest_document_with_access, retrieve_with_access
+from cache import SemanticCache, rag_query
+from index_ops import ingest_new_version, sync_documents
 
 
+from dotenv import load_dotenv
+
+from openai import OpenAI
+
+load_dotenv()
 # --- Configuración de embeddings ---
 
 _model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
@@ -38,17 +43,20 @@ class SentenceTransformerEmbeddingFunction(chromadb.EmbeddingFunction):
 
 # --- Configuración del LLM ---
 
-_groq_client = Groq(api_key=os.environ.get("GROQ_API_KEY", ""))
+client = OpenAI(
+    base_url="https://api.groq.com/openai/v1",
+    api_key=os.environ.get("GROQ_API_KEY"),
+)
 
 
 def llm_fn(prompt: str) -> str:
     """Genera una respuesta usando Groq."""
     try:
-        response = _groq_client.chat.completions.create(
-            model="gpt-oss-120B",
+        response = client.chat.completions.create(
+            model="openai/gpt-oss-120b",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.3,
-            max_tokens=1024,
+            max_tokens=2048,
         )
         return response.choices[0].message.content
     except Exception as e:

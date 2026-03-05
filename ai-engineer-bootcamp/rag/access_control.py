@@ -6,13 +6,12 @@ que se aplican como metadata filters en el vector store.
 
 from dataclasses import dataclass, field
 
-from rag.index_ops import generate_chunk_id
+from index_ops import generate_chunk_id
 
 
 @dataclass
 class User:
     """Representa un usuario con roles y permisos."""
-
     user_id: str
     roles: list[str] = field(default_factory=list)
     department: str = "general"
